@@ -40,6 +40,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TrackerApp/main.m; sourceTree = "<group>"; };
 		241DF06940697437C6506F88 /* libPods-TrackerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		309DF923178878B4F31087DB /* Pods-TrackerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackerApp.debug.xcconfig"; path = "Target Support Files/Pods-TrackerApp/Pods-TrackerApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6808A1A627153615004A688D /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TrackerApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE4C2E54A783CA79E1BE45E4 /* libPods-TrackerApp-TrackerAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackerApp-TrackerAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -91,7 +92,6 @@
 				00662267C064F587FFD96C1B /* Pods-TrackerApp-TrackerAppTests.debug.xcconfig */,
 				04DAC92FE6931CB3F45AA3B4 /* Pods-TrackerApp-TrackerAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -118,6 +118,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6808A1A5271535F9004A688D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6808A1A627153615004A688D /* Ionicons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +136,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6808A1A5271535F9004A688D /* Fonts */,
 				13B07FAE1A68108700A75B9A /* TrackerApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TrackerAppTests */,

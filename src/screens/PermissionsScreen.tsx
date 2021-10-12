@@ -21,7 +21,7 @@ export default function PermissionsScreen() {
       // Maybe in some future I'll add this part.
     }
 
-    console.log({ permissionStatus });
+    // console.log({ permissionStatus });
   };
 
   return (

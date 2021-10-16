@@ -21,7 +21,12 @@ export default function Fab({ iconName, onPress, style = {} }: Props) {
         activeOpacity={0.8}
         onPress={onPress}
         style={styles.blackButton}>
-        <Icon name={iconName} color="#fff" size={35} />
+        <Icon
+          name={iconName}
+          color="#fff"
+          size={35}
+          style={{ left: 1, top: 1 }}
+        />
       </TouchableOpacity>
     </View>
   );

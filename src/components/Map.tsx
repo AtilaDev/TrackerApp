@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import useLocation from '../hooks/useLocation';
 import LoadingScreen from '../screens/LoadingScreen';
@@ -9,13 +9,24 @@ interface Props {
 }
 
 export default function Map({ markers }: Props) {
-  const { hasLocation, intialPosition } = useLocation();
+  const { hasLocation, intialPosition, getCurrentLocation } = useLocation();
+  const mapViewRef = useRef<MapView>();
+
+  const centerPosition = async () => {
+    const location = await getCurrentLocation();
+
+    mapViewRef.current?.animateCamera({
+      center: location,
+    });
+  };
 
   if (!hasLocation) return <LoadingScreen />;
 
   return (
     <>
       <MapView
+        // I set "el!" because at this point I'm sure that MapView was created successfully
+        ref={el => (mapViewRef.current = el!)}
         style={{ flex: 1 }}
         // provider={PROVIDER_GOOGLE}
         showsUserLocation
@@ -37,8 +48,8 @@ export default function Map({ markers }: Props) {
       </MapView>
 
       <Fab
-        iconName="star-outline"
-        onPress={() => console.log('Fab pressed')}
+        iconName="compass-outline"
+        onPress={centerPosition}
         style={{
           position: 'absolute',
           bottom: 20,

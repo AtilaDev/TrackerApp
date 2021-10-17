@@ -9,9 +9,15 @@ export default function useLocation() {
     longitude: 0,
   });
 
+  const [userLocation, setUserLocation] = useState<Location>({
+    latitude: 0,
+    longitude: 0,
+  });
+
   useEffect(() => {
     getCurrentLocation().then(location => {
       setIntialPosition(location);
+      setUserLocation(location);
       setHasLocation(true);
     });
   }, []);
@@ -33,9 +39,27 @@ export default function useLocation() {
     });
   };
 
+  const followUserLocation = () => {
+    Geolocation.watchPosition(
+      ({ coords }) => {
+        setUserLocation({
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        });
+      },
+      err => console.log(err),
+      {
+        enableHighAccuracy: true,
+        distanceFilter: 10,
+      },
+    );
+  };
+
   return {
     hasLocation,
     intialPosition,
     getCurrentLocation,
+    followUserLocation,
+    userLocation,
   };
 }

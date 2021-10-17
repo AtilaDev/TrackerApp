@@ -17,9 +17,19 @@ export default function useLocation() {
   });
 
   const watchId = useRef<number>();
+  const isMounted = useRef<boolean>(true);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     getCurrentLocation().then(location => {
+      if (!isMounted.current) return;
+
       setIntialPosition(location);
       setUserLocation(location);
       setRouteLines(routes => [...routes, location]);
@@ -31,6 +41,8 @@ export default function useLocation() {
     return new Promise((resolve, reject) => {
       Geolocation.getCurrentPosition(
         ({ coords }) => {
+          if (!isMounted.current) return;
+
           resolve({
             latitude: coords.latitude,
             longitude: coords.longitude,
@@ -47,6 +59,8 @@ export default function useLocation() {
   const followUserLocation = () => {
     watchId.current = Geolocation.watchPosition(
       ({ coords }) => {
+        if (!isMounted.current) return;
+
         const location: Location = {
           latitude: coords.latitude,
           longitude: coords.longitude,
